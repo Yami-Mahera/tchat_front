@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import Login from './components/Login';
+import Tchat from './components/Tchat';
 
-function App() {
+const PrivateRoute = ({ component: Component, ...rest }: any) => {
+  const auth = localStorage.getItem('user_id');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Route
+      {...rest}
+      render={(props) => {
+        if (!Boolean(auth)) {
+          return (
+            <Redirect
+              to={{ pathname: '/login', state: { from: props.location } }}
+            />
+          );
+        }
+        return <Component {...props} />;
+      }}
+    />
+  );
+};
+
+const App = () => {
+  return (
+    <div>
+      <BrowserRouter>
+        <Switch>
+          <PrivateRoute exact path="/" component={Tchat} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;

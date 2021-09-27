@@ -1,0 +1,13 @@
+.content_msg {
+    position: relative;
+  }
+  
+  .child {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    font-weight: bold;
+    font-size: 30px;
+  }
