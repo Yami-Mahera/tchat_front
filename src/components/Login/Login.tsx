@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -50,8 +51,8 @@ const Copyright = () => {
 };
 
 const Login = () => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const classes = useStyles();
   const history = useHistory();
   const signIn = useSignIn();
@@ -61,7 +62,7 @@ const Login = () => {
   };
   const auth = localStorage.getItem('user_id');
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (Boolean(auth)) history.push('/');
     // eslint-disable-next-line
   }, [auth]);

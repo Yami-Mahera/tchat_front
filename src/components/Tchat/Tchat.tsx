@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -46,18 +46,18 @@ const useStyles = makeStyles({
 
 const Tchat = () => {
   const classes = useStyles();
-  const [conversationId, setConversationId] = React.useState<string>('');
-  const [receiverId, setReceiverId] = React.useState<string>('');
-  const [conversations, setConversations] = React.useState<IConversation[]>([]);
-  const [newUser, setNewUser] = React.useState<Record<string, IUser>>({});
-  const [messages, setMessages] = React.useState<IMessages[]>([]);
+  const [conversationId, setConversationId] = useState<string>('');
+  const [receiverId, setReceiverId] = useState<string>('');
+  const [conversations, setConversations] = useState<IConversation[]>([]);
+  const [newUser, setNewUser] = useState<Record<string, IUser>>({});
+  const [messages, setMessages] = useState<IMessages[]>([]);
 
   const conversationList = UseGetConversations();
   const user = useGetUser();
   const closeConversation = useCloseConversation();
   const userId = getToken();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (userId) {
       const f = async () => {
         const res = await user();
@@ -68,7 +68,7 @@ const Tchat = () => {
     // eslint-disable-next-line
   }, [userId]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const f = async () => {
       const res = await conversationList();
       setConversations(res.data);

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -28,9 +29,9 @@ const Conversation = ({
   onUpdateConversation,
 }: IpropsConversation) => {
   const userList = useGetUsers();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [users, setUsers] = useState<IUser[]>([]);
-  const [selectedValue, setSelectedValue] = React.useState(users[0]?._id);
+  const [selectedValue, setSelectedValue] = useState(users[0]?._id);
 
   useEffect(() => {
     const f = async () => {

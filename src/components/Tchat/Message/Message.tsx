@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
@@ -47,7 +46,7 @@ interface IpropsConversation {
 
 const Message = (props: IpropsConversation) => {
   const { conversationId, receiverId, onSetMessage, messages } = props;
-  const [message, setMessage] = React.useState<string>('');
+  const [message, setMessage] = useState<string>('');
 
   const createMessage = useCreateMessage();
   const getMessage = useGetMessages();
@@ -55,7 +54,7 @@ const Message = (props: IpropsConversation) => {
 
   const classes = useStyles();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const f = async () => {
       if (conversationId) {
         const res = await getMessage({ conversationId });
@@ -80,18 +79,18 @@ const Message = (props: IpropsConversation) => {
     }
   };
 
-  const messagesEndRef = React.useRef<HTMLUListElement>(null);
+  const messagesEndRef = useRef<HTMLUListElement>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     messagesEndRef?.current?.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
       inline: 'start',
     });
   }, [message]);
-  const [userConnected, setUserConnected] = React.useState<Record<string, IUser>>({});
+  const [userConnected, setUserConnected] = useState<Record<string, IUser>>({});
   const userId = getToken();
-  React.useEffect(() => {
+  useEffect(() => {
     if (userId) {
       const f = async () => {
         const res = await user();
