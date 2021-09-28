@@ -49,7 +49,7 @@ const DialogeAddContact = (props: DialogProps) => {
       aria-labelledby="simple-dialog-title"
       open={open}
     >
-      <DialogTitle id="simple-dialog-title">Add a new user</DialogTitle>
+      <DialogTitle id="simple-dialog-title">Nouvelle conversation</DialogTitle>
       <List>
         {users.map((user) => (
           <ListItem

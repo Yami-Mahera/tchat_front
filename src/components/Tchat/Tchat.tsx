@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Divider from '@material-ui/core/Divider';
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -137,12 +137,12 @@ const Tchat = () => {
           </List>
           <Divider />
           <Grid item xs={12} style={{ padding: '10px' }}>
-            <TextField
+            {/* <TextField
               id="outlined-basic-email"
               label="Search"
               variant="outlined"
               fullWidth
-            />
+            /> */}
           </Grid>
           <Divider />
           <Conversation

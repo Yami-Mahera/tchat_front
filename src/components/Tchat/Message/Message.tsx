@@ -148,7 +148,7 @@ const Message = (props: IpropsConversation) => {
         <Grid item xs={11}>
           <TextField
             id="outlined-basic-email"
-            label="Type Something"
+            label="Tapez un message..."
             fullWidth
             value={message}
             {...{ onChange: (e) => setMessage(e.target.value) }}
