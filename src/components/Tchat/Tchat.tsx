@@ -65,6 +65,7 @@ const Tchat = () => {
       };
       f();
     }
+    // eslint-disable-next-line
   }, [userId]);
 
   React.useEffect(() => {
@@ -73,6 +74,7 @@ const Tchat = () => {
       setConversations(res.data);
     };
     f();
+    // eslint-disable-next-line
   }, []);
 
   const handleSelecteConersation = (

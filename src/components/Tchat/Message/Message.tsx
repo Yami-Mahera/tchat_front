@@ -64,6 +64,7 @@ const Message = (props: IpropsConversation) => {
       }
     };
     f();
+    // eslint-disable-next-line
   }, [conversationId]);
 
   const handleCreateMessage = async () => {
@@ -99,6 +100,7 @@ const Message = (props: IpropsConversation) => {
       };
       f();
     }
+    // eslint-disable-next-line
   }, [userId]);
   
   if (!conversationId) return <div className="content_msg"><div className="child">Bienvenue {userConnected?.username}</div></div>;

@@ -63,6 +63,7 @@ const Login = () => {
 
   React.useEffect(() => {
     if (Boolean(auth)) history.push('/');
+    // eslint-disable-next-line
   }, [auth]);
 
   return (

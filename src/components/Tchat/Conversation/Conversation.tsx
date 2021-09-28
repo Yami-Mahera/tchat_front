@@ -53,6 +53,7 @@ const Conversation = ({
       }
     };
     f();
+    // eslint-disable-next-line
   }, [conversations]);
 
   const handleClickOpen = () => {
