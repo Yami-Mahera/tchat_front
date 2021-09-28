@@ -1,6 +1,6 @@
 # Application_Tchat
 
-*** Clone repositories ***
+***Clone repositories***
 
 - **_front-end_**: `https://gitlab.com/yandrianjafy/tchat_front.git`;
 - **_back-end_**: `https://gitlab.com/yandrianjafy/tchat_back.git`;
