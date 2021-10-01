@@ -16,7 +16,7 @@ import { useCreateMessage, useGetMessages, useGetUser } from '../../../action';
 import { IMessages, IUser } from '../../../Types';
 import { getToken } from '../../../tools';
 
-import './style.css'
+import './style.css';
 
 const useStyles = makeStyles({
   table: {
@@ -64,7 +64,7 @@ const Message = (props: IpropsConversation) => {
     };
     f();
     // eslint-disable-next-line
-  }, [conversationId]);
+  }, [conversationId, getMessage]);
 
   const handleCreateMessage = async () => {
     const newMessage = await createMessage({
@@ -94,21 +94,28 @@ const Message = (props: IpropsConversation) => {
     if (userId) {
       const f = async () => {
         const res = await user();
-        //@ts-ignore    
+        //@ts-ignore
         setUserConnected(res?.data);
       };
       f();
     }
     // eslint-disable-next-line
   }, [userId]);
-  
-  if (!conversationId) return <div className="content_msg"><div className="child">Bienvenue {userConnected?.username}</div></div>;
+
+  if (!conversationId)
+    return (
+      <div className="content_msg">
+        <div className="child">Bienvenue {userConnected?.username}</div>
+      </div>
+    );
 
   return (
     <>
       <List className={classes.messageArea} ref={messagesEndRef}>
         {messages?.map((message, i) => {
-          const time: string = new Date(message?.createdAt).toLocaleTimeString();
+          const time: string = new Date(
+            message?.createdAt,
+          ).toLocaleTimeString();
           return (
             <ListItem key={i}>
               <Grid
@@ -122,7 +129,11 @@ const Message = (props: IpropsConversation) => {
                   //@ts-ignore
                   align={userId === message?.senderId ? 'right' : 'left'}
                 >
-                  {userId === message?.senderId ? '' : <Avatar alt="Remy Sharp" />}
+                  {userId === message?.senderId ? (
+                    ''
+                  ) : (
+                    <Avatar alt="Remy Sharp" />
+                  )}
                 </ListItemIcon>
                 <Grid container item xs={12}>
                   <ListItemText
@@ -165,5 +176,3 @@ const Message = (props: IpropsConversation) => {
 };
 
 export default Message;
-
-
